@@ -7,14 +7,16 @@ sudo apt-get update
 sudo apt-get install -yqq unzip wget
 
 # Instalar Chrome
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 sudo apt-get update
 sudo apt-get install -y google-chrome-stable
 
 # Instalar ChromeDriver (Versión 116)
-wget -O /tmp/chromedriver.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/116.0.5845.96/linux64/chromedriver-linux64.zip
-unzip /tmp/chromedriver.zip -d /usr/local/bin/
+wget -O /tmp/chromedriver.zip https://storage.googleapis.com/chrome-for-testing-public/116.0.5845.96/linux64/chromedriver-linux64.zip
+unzip /tmp/chromedriver.zip -d /tmp/
+sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
+sudo chmod +x /usr/local/bin/chromedriver
 
 # Instalar librerías de Python
 pip3 install --no-cache-dir \
@@ -30,3 +32,5 @@ pip3 install --no-cache-dir \
     openpyxl==3.1.2 \
     multiprocessing-logging==0.3.4 \
     tqdm==4.66.2
+
+echo "Instalación completada con éxito"
