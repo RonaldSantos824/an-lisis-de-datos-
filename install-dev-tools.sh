@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Actualizar paquetes
+sudo apt-get update
+
+# Instalar dependencias básicas
+sudo apt-get install -yqq unzip wget
+
 # Instalar librerías de Python
 pip3 install --no-cache-dir \
     selenium==4.17.2 \
